@@ -1,0 +1,358 @@
+openapi: 3.0.0
+info:
+  title: Books API
+  description: Web service for books, authors, and publishers
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+paths:
+  /books:
+    get:
+      tags: [books]
+      summary: List all books
+      operationId: getBooks
+      responses:
+        "200":
+          description: A list of books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+    post:
+      tags: [books]
+      summary: Create a new book
+      operationId: createBook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Book"
+      responses:
+        "201":
+          description: Book created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
+        "400":
+          description: Bad request
+
+  /books/{bookId}:
+    get:
+      tags: [books]
+      summary: Get a book by ID
+      operationId: getBookById
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
+        "404":
+          description: Not found
+    put:
+      tags: [books]
+      summary: Update a book by ID
+      operationId: updateBookById
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Book"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Book"
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+    delete:
+      tags: [books]
+      summary: Delete a book by ID
+      operationId: deleteBookById
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No content
+        "404":
+          description: Not found
+
+  /authors:
+    get:
+      tags: [authors]
+      summary: List all authors
+      operationId: getAuthors
+      responses:
+        "200":
+          description: A list of authors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Author"
+    post:
+      tags: [authors]
+      summary: Create a new author
+      operationId: createAuthor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Author"
+      responses:
+        "201":
+          description: Author created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Author"
+        "400":
+          description: Bad request
+
+  /authors/{authorId}:
+    get:
+      tags: [authors]
+      summary: Get an author by ID
+      operationId: getAuthorById
+      parameters:
+        - in: path
+          name: authorId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Author"
+        "404":
+          description: Not found
+    put:
+      tags: [authors]
+      summary: Update an author by ID
+      operationId: updateAuthorById
+      parameters:
+        - in: path
+          name: authorId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Author"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Author"
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+    delete:
+      tags: [authors]
+      summary: Delete an author by ID
+      operationId: deleteAuthorById
+      parameters:
+        - in: path
+          name: authorId
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No content
+        "404":
+          description: Not found
+
+  /publishers:
+    get:
+      tags: [publishers]
+      summary: List all publishers
+      operationId: getPublishers
+      responses:
+        "200":
+          description: A list of publishers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Publisher"
+    post:
+      tags: [publishers]
+      summary: Create a new publisher
+      operationId: createPublisher
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Publisher"
+      responses:
+        "201":
+          description: Publisher created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Publisher"
+        "400":
+          description: Bad request
+
+  /publishers/{publisherId}:
+    get:
+      tags: [publishers]
+      summary: Get a publisher by ID
+      operationId: getPublisherById
+      parameters:
+        - in: path
+          name: publisherId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Publisher"
+        "404":
+          description: Not found
+    put:
+      tags: [publishers]
+      summary: Update a publisher by ID
+      operationId: updatePublisherById
+      parameters:
+        - in: path
+          name: publisherId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Publisher"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Publisher"
+        "400":
+          description: Bad request
+        "404":
+          description: Not found
+    delete:
+      tags: [publishers]
+      summary: Delete a publisher by ID
+      operationId: deletePublisherById
+      parameters:
+        - in: path
+          name: publisherId
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: No content
+        "404":
+          description: Not found
+
+components:
+  schemas:
+    Book:
+      type: object
+      required: [id, title, language, pages, authorId, publisherId]
+      properties:
+        id:
+          type: string
+          example: "1"
+        title:
+          type: string
+        edition:
+          type: string
+          nullable: true
+        copyright:
+          type: integer
+          nullable: true
+        language:
+          type: string
+          example: "ENGLISH"
+        pages:
+          type: integer
+          example: 976
+        authorId:
+          type: string
+          example: "10"
+        publisherId:
+          type: string
+          example: "100"
+
+    Author:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          example: "10"
+        name:
+          type: string
+          example: "Abraham Silberschatz"
+        country:
+          type: string
+          nullable: true
+
+    Publisher:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: string
+          example: "100"
+        name:
+          type: string
+          example: "John Wiley & Sons"
+        location:
+          type: string
+          nullable: true

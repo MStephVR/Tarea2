@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "title": "Operating System Concepts",
+    "edition": "9th",
+    "copyright": 2012,
+    "language": "ENGLISH",
+    "pages": 976,
+    "authorId": "10",
+    "publisherId": "100"
+  },
+  {
+    "id": "2",
+    "title": "Conceptos de Sistemas Operativos",
+    "edition": "9th",
+    "copyright": 2015,
+    "language": "SPANISH",
+    "pages": 1000,
+    "authorId": "10",
+    "publisherId": "101"
+  }
+]
